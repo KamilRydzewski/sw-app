@@ -28,7 +28,7 @@ export const GetStarships = () => async (
           "starships"
         );
         shipsList.push(...response.data.results, ...restShips);
-        getAndSetIdFromUrl(shipsList);
+        shipsList.map((item) => getAndSetIdFromUrl(item));
       });
 
     dispatch({

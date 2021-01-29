@@ -2,6 +2,6 @@ import { combineReducers } from "redux";
 import starshipReducer from "./StarshipReducer";
 
 const RootReducer = combineReducers({
-  starship: starshipReducer,
+  starships: starshipReducer,
 });
 export default RootReducer;

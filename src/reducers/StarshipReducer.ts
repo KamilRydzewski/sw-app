@@ -31,6 +31,7 @@ const starshipReducer = (
     case GET_STARSHIP_SUCCESS:
       return {
         loading: false,
+        starships: action.payload,
       };
     default:
       return state;

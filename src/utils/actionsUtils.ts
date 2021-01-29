@@ -1,4 +1,5 @@
 import axios from "axios";
+import { StarshipType } from "src/actions/starship/StarshipActionTypes";
 
 export async function fetchRestOfList(
   total: number,
@@ -19,18 +20,8 @@ export async function fetchRestOfList(
     .flat();
 }
 
-interface IUrl {
-  url: string;
-}
-
-type GetAndSetIdFromUrlData = IUrl[] | IUrl;
+type GetAndSetIdFromUrlData = StarshipType;
 
 export function getAndSetIdFromUrl(data: GetAndSetIdFromUrlData) {
-  if (Array.isArray(data)) {
-    return data.map((item) => {
-      return { ...item, id: parseInt(item.url.slice(-2, -1)) };
-    });
-  } else if (typeof data === "object") {
-    return { ...data, id: parseInt(data.url.slice(-2, -1)) };
-  } else return data;
+  return { ...data, id: parseInt(data.url.slice(-2, -1)) };
 }

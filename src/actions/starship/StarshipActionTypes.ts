@@ -26,6 +26,7 @@ export interface StarshipFailureI {
 }
 export interface StarshipSuccesI {
   type: typeof GET_STARSHIP_SUCCESS;
+  payload: StarshipType[];
 }
 
 export type StarshipDispatchTypes =
