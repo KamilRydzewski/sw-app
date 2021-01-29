@@ -1,0 +1,2 @@
+# The eslint rule mistakenly treats d.ts as js
+/**/*.d.ts

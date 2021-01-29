@@ -16,17 +16,17 @@ export type StarshipsType = {
   previous: string;
   results: StarshipType[];
 };
-export interface StarshipRequest {
+export interface StarshipRequestI {
   type: typeof GET_STARSHIP_REUEST;
 }
-export interface StarshipFailure {
+export interface StarshipFailureI {
   type: typeof GET_STARSHIP_FAILURE;
 }
-export interface StarshipSucces {
+export interface StarshipSuccesI {
   type: typeof GET_STARSHIP_SUCCESS;
 }
 
 export type StarshipDispatchTypes =
-  | StarshipRequest
-  | StarshipFailure
-  | StarshipSucces;
+  | StarshipRequestI
+  | StarshipFailureI
+  | StarshipSuccesI;

@@ -38,7 +38,6 @@ export const GetStarships = () => async (
         }
         return Promise.all(promises);
       });
-
     dispatch({
       type: GET_STARSHIP_SUCCESS,
       payload: shipsList,
@@ -50,5 +49,4 @@ export const GetStarships = () => async (
       type: GET_STARSHIP_FAILURE,
     });
   }
-  //     dispatch({ type: GET_STARSHIP_SUCCESS, payload: response.data })
 };

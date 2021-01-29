@@ -1,14 +1,18 @@
 import React from "react";
-import { Wrapper } from "./BaseCard.styles";
-import { useDispatch } from "react-redux";
-import { GetStarships } from "../../../actions/starship/StarshipActions";
+import { Wrapper, CardBackground, Container } from "./BaseCard.styles";
 
-const BaseCard: React.FC = ({ children }) => {
-  const dispatch = useDispatch();
-  const handle = () => dispatch(GetStarships());
+interface BaseCardI {
+  title: string;
+  list?: any;
+  actions?: any;
+}
+
+const BaseCard: React.FC<BaseCardI> = ({ title, list, actions }) => {
   return (
     <Wrapper>
-      <button onClick={handle}>sadddass</button>
+      <Container>
+        <CardBackground></CardBackground>
+      </Container>
     </Wrapper>
   );
 };
