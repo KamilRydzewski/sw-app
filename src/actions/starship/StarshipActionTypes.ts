@@ -3,11 +3,13 @@ export const GET_STARSHIP_FAILURE = "GET_STARSHIP_FAILURE";
 export const GET_STARSHIP_SUCCESS = "GET_STARSHIP_SUCCESS";
 
 export type StarshipType = {
+  id?: number;
   name: string;
   model: string;
   passengers: number;
   manufacturer: string;
   crew: number;
+  url: string;
 };
 
 export type StarshipsType = {

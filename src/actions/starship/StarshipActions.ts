@@ -7,6 +7,7 @@ import {
   StarshipDispatchTypes,
   StarshipType,
 } from "./StarshipActionTypes";
+import { fetchRestOfList, getAndSetIdFromUrl } from "src/utils/actionsUtils";
 
 export const GetStarships = () => async (
   dispatch: Dispatch<StarshipDispatchTypes>
@@ -19,30 +20,21 @@ export const GetStarships = () => async (
     let shipsList: StarshipType[] = [];
     const fetchedShips = await axios
       .get(`${process.env.REACT_APP_STAR_WARS_API}/starships`)
-      .then((response) => {
-        shipsList.push(response.data.results);
-        return {
-          total: response.data.count,
-          onPage: response.data.results.length,
-        };
-      })
-      .then((ships: { total: number; onPage: number }) => {
-        const totalPages: number = Math.ceil(ships.total / ships.onPage);
-        let promises = [];
-        for (let i = 2; i <= totalPages; i++) {
-          promises.push(
-            axios.get(
-              `${process.env.REACT_APP_STAR_WARS_API}/starships?page=${i}`
-            )
-          );
-        }
-        return Promise.all(promises);
+      .then(async (response) => {
+        const { count, results } = response.data;
+        const restShips = await fetchRestOfList(
+          count,
+          results.length,
+          "starships"
+        );
+        shipsList.push(...response.data.results, ...restShips);
+        getAndSetIdFromUrl(shipsList);
       });
+
     dispatch({
       type: GET_STARSHIP_SUCCESS,
       payload: shipsList,
     });
-    console.log(fetchedShips);
   } catch (error) {
     console.log("Can't get starships" + error);
     dispatch({

@@ -3,7 +3,7 @@ import GlobalStyle from "src/theme/GlobalStyle";
 import { theme } from "src/theme/mainTheme";
 import { useEffect } from "react";
 import GalaxyBackground from "src/components/commonUI/GalaxyBackground/GalaxyBackground";
-import { getKeyPressed } from "src/utils/keyboard";
+import { getKeyPressed } from "src/utils/keyboardUtils";
 import { useHistory } from "react-router-dom";
 
 const MainTemplate: React.FC = ({ children }) => {

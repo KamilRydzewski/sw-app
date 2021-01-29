@@ -1,5 +1,11 @@
 import React from "react";
-import { Wrapper, CardBackground, Container } from "./BaseCard.styles";
+import {
+  Wrapper,
+  CardBackground,
+  Container,
+  CardTitle,
+  CardParameter,
+} from "./BaseCard.styles";
 
 interface BaseCardI {
   title: string;
@@ -12,6 +18,8 @@ const BaseCard: React.FC<BaseCardI> = ({ title, list, actions }) => {
     <Wrapper>
       <Container>
         <CardBackground></CardBackground>
+        <CardTitle></CardTitle>
+        <CardParameter></CardParameter>
       </Container>
     </Wrapper>
   );

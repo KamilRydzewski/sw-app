@@ -37,3 +37,7 @@ export const CardBackground = styled.div`
   opacity: 0.6;
   position: absolute;
 `;
+
+export const CardTitle = styled.div``;
+
+export const CardParameter = styled.div``;

@@ -2,9 +2,8 @@ import { NavLink, Redirect } from "react-router-dom";
 import BaseMenuLink from "src/components/baseUI/BaseLinks/BaseMenuLink";
 import styled, { css } from "styled-components";
 import { NavigationSchema } from "./NavigationSchema";
-import { getKeyPressed } from "src/utils/keyboard";
+import { getKeyPressed } from "src/utils/keyboardUtils";
 import { useState, useEffect } from "react";
-import { goToPage } from "src/utils/location";
 
 const StyledNavList = styled.ul`
   display: flex;
