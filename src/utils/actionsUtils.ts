@@ -1,5 +1,6 @@
 import axios from "axios";
 import { StarshipType } from "src/actions/starship/StarshipActionTypes";
+import { PeopleType } from "src/actions/people/PeopleActionTypes";
 
 export async function fetchRestOfList(
   total: number,
@@ -20,8 +21,24 @@ export async function fetchRestOfList(
     .flat();
 }
 
-type GetAndSetIdFromUrlData = StarshipType;
+type UrlData = {
+  url: string;
+};
 
-export function getAndSetIdFromUrl(data: GetAndSetIdFromUrlData) {
-  return { ...data, id: parseInt(data.url.slice(-2, -1)) };
+export function getAndSetIdFromUrl(data: UrlData) {
+  let urlDecrypted = data.url.split("/");
+  return { ...data, id: parseInt(urlDecrypted[urlDecrypted.length - 2]) };
+}
+export function getAndSetTypeFromUrl(data: UrlData) {
+  let urlDecrypted = data.url.split("/");
+  return { ...data, cardType: urlDecrypted[urlDecrypted.length - 3] };
+}
+
+export function setTypeAndIdFromUrl(data: UrlData) {
+  let urlDecrypted = data.url.split("/");
+  return {
+    ...data,
+    cardType: urlDecrypted[urlDecrypted.length - 3],
+    id: parseInt(urlDecrypted[urlDecrypted.length - 2]),
+  };
 }

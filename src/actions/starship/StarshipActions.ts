@@ -17,7 +17,7 @@ export const GetStarships = () => async (
   });
 
   try {
-    let shipsList: StarshipType[] = [];
+    let shipsList: any[] = [];
     const fetchedShips = await axios
       .get(`${process.env.REACT_APP_STAR_WARS_API}/starships`)
       .then(async (response) => {
@@ -28,9 +28,8 @@ export const GetStarships = () => async (
           "starships"
         );
         shipsList.push(...response.data.results, ...restShips);
-        shipsList.map((item) => getAndSetIdFromUrl(item));
+        shipsList = shipsList.map((item) => getAndSetIdFromUrl(item));
       });
-
     dispatch({
       type: GET_STARSHIP_SUCCESS,
       payload: shipsList,

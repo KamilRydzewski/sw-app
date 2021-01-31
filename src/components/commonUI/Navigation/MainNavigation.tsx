@@ -52,6 +52,7 @@ const MainNavigation: React.FC = () => {
     <StyledNavList>
       {NavigationSchema.map((link, index) => (
         <StyledNavItem
+          key={index}
           focused={focused === index}
           onMouseEnter={() => setFocused(index)}
         >

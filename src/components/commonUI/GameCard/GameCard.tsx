@@ -1,24 +1,69 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import BaseCard from "src/components/baseUI/BaseCard/BaseCard";
-import Typography from "@material-ui/core/Typography";
+import {
+  Wrapper,
+  CardBackground,
+  Container,
+  CardTitle,
+  CardParameter,
+  CardActions,
+} from "./GameCard.styles";
+import styled from "styled-components";
+// import { StarshipType } from "src/actions/starship/StarshipActionTypes";
+import jediIcon from "src/assets/images/jedi.png";
+interface GameCardI {
+  title?: string;
+  description?: any;
+  actions?: any;
+  reversed?: boolean;
+}
 
-type Props = {
-  title: string;
-  params: any[];
-};
+const StyledIconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 
-const GameCard: React.FC<Props> = ({ title, params }) => {
+  img {
+    width: 160px;
+  }
+  @media all and (max-width: ${({ theme }) => theme.bpTablet}) {
+    img {
+      width: 120px;
+    }
+  }
+  @media all and (max-width: ${({ theme }) => theme.bpMobile}) {
+    img {
+      width: 80px;
+    }
+  }
+`;
+
+const GameCard: React.FC<GameCardI> = ({
+  title,
+  description,
+  actions,
+  reversed,
+}) => {
   return (
-    <BaseCard
-      title={title}
-      list={params.map((el) => (
-        <Typography key={el} color="textSecondary" gutterBottom>
-          {el}
-        </Typography>
-      ))}
-      actions={<Button>Check</Button>}
-    ></BaseCard>
+    <Wrapper>
+      <Container>
+        {reversed ? (
+          <>
+            <CardBackground></CardBackground>
+            <StyledIconWrapper>
+              <img src={jediIcon} alt="jedi icon"></img>
+            </StyledIconWrapper>
+          </>
+        ) : (
+          <>
+            <CardBackground></CardBackground>
+            <CardTitle>{title}</CardTitle>
+            <CardParameter>{description}</CardParameter>
+            <CardActions>{actions}</CardActions>
+          </>
+        )}
+      </Container>
+    </Wrapper>
   );
 };
 

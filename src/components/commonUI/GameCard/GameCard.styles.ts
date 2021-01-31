@@ -28,6 +28,10 @@ export const Container = styled.div`
   position: relative;
   height: 100%;
   width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 `;
 
 export const CardBackground = styled.div`
@@ -36,8 +40,24 @@ export const CardBackground = styled.div`
   background: #222222;
   opacity: 0.6;
   position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 `;
 
-export const CardTitle = styled.div``;
+export const CardTitle = styled.h3`
+  padding: 10px 20px;
+  text-align: center;
+  color: ${({ theme }) => theme.white};
+`;
 
-export const CardParameter = styled.div``;
+export const CardParameter = styled.div`
+  color: ${({ theme }) => theme.white};
+`;
+
+export const CardActions = styled.div`
+  background: gray;
+  opacity: 0.2;
+  align-self: flex-end;
+  margin-top: auto;
+`;

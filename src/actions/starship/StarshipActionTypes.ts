@@ -4,6 +4,7 @@ export const GET_STARSHIP_SUCCESS = "GET_STARSHIP_SUCCESS";
 
 export type StarshipType = {
   id?: number;
+  cardType?: string;
   name: string;
   model: string;
   passengers: number;
