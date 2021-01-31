@@ -13,8 +13,6 @@ import BaseButton from "src/components/baseUI/BaseButton/BaseButton";
 
 const MainTemplate: React.FC = ({ children }) => {
   const dispatch = useDispatch();
-  const starshipsState = useSelector((state: RootStoreType) => state.starships);
-  const peopleState = useSelector((state: RootStoreType) => state.people);
   const isMounted = useRef(false);
   useEffect(() => {
     dispatch(GetStarships());
@@ -23,10 +21,11 @@ const MainTemplate: React.FC = ({ children }) => {
   const escPress = getKeyPressed("Escape");
   let history = useHistory();
   useEffect(() => {
+    console.log(location);
     if (
       isMounted.current &&
-      location.pathname !== "/menu" &&
-      location.pathname !== "/"
+      location.hash !== "#/menu" &&
+      location.hash !== "/"
     ) {
       history.goBack();
     } else {
