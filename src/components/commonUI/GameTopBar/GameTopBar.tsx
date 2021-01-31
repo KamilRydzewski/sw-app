@@ -3,8 +3,8 @@ import styled, { css } from "styled-components";
 const StyledTopBarWrapper = styled.div`
   position: fixed;
   top: 0;
+  padding: 20px 10px;
   z-index: 999;
-  height: 80px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -20,7 +20,7 @@ interface IPoints {
 const Points = styled.p<IPoints>`
   color: ${({ theme }) => theme.blue};
   font-size: ${({ theme }) => theme.fontSize.xl};
-  margin: 0 20px;
+  margin: 0 40px;
 
   ${({ secondary }) =>
     secondary &&
@@ -32,9 +32,14 @@ const Points = styled.p<IPoints>`
 type GameTopBarProps = {
   leftPoints?: number;
   rightPoints?: number;
+  children?: any;
 };
 
-const GameTopBar: React.FC<GameTopBarProps> = ({ leftPoints, rightPoints }) => (
+const GameTopBar: React.FC<GameTopBarProps> = ({
+  leftPoints,
+  rightPoints,
+  children,
+}) => (
   <StyledTopBarWrapper>
     <GamePoints>
       <Points>{leftPoints}</Points>

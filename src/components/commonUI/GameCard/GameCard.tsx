@@ -5,10 +5,10 @@ import {
   Container,
   CardTitle,
   CardParameter,
+  CardParameterContainer,
   CardActions,
 } from "./GameCard.styles";
 import styled from "styled-components";
-// import { StarshipType } from "src/actions/starship/StarshipActionTypes";
 import jediIcon from "src/assets/images/jedi.png";
 interface GameCardI {
   title?: string;
@@ -17,6 +17,7 @@ interface GameCardI {
   reversed?: boolean;
   redCard?: boolean;
   blueCard?: boolean;
+  winner?: boolean;
 }
 
 const StyledIconWrapper = styled.div`
@@ -47,10 +48,11 @@ const GameCard: React.FC<GameCardI> = ({
   reversed,
   redCard,
   blueCard,
+  winner,
 }) => {
   return (
-    <Wrapper redCard={redCard} blueCard={blueCard}>
-      <Container>
+    <Wrapper redCard={redCard} blueCard={blueCard} winner={winner}>
+      <Container faceUp={!reversed}>
         {reversed ? (
           <>
             <CardBackground></CardBackground>
@@ -62,7 +64,11 @@ const GameCard: React.FC<GameCardI> = ({
           <>
             <CardBackground></CardBackground>
             <CardTitle>{title}</CardTitle>
-            <CardParameter>{description}</CardParameter>
+            <CardParameter>
+              <CardParameterContainer redCard={redCard} blueCard={blueCard}>
+                {description}
+              </CardParameterContainer>
+            </CardParameter>
             <CardActions>{actions}</CardActions>
           </>
         )}

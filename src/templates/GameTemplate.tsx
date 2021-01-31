@@ -5,7 +5,7 @@ const StyledSection = styled.section`
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding-top: 80px;
 
   @media all and (max-width: ${({ theme }) => theme.bpMobile}) {
     flex-direction: column;
@@ -15,7 +15,6 @@ const StyledWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  max-width: 1200px;
   width: 100%;
   @media all and (max-width: ${({ theme }) => theme.bpMobile}) {
     flex-direction: column;

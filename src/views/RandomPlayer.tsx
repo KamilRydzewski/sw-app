@@ -30,8 +30,14 @@ type CardsState = {
 };
 
 type PointsState = {
-  left: number;
-  right: number;
+  left: {
+    prev: number;
+    now: number;
+  };
+  right: {
+    prev: number;
+    now: number;
+  };
 };
 
 const initialCardsState = {
@@ -46,8 +52,14 @@ const initialCardsState = {
 };
 
 const initialPointsState = {
-  left: 0,
-  right: 0,
+  left: {
+    prev: 0,
+    now: 0,
+  },
+  right: {
+    prev: 0,
+    now: 0,
+  },
 };
 
 interface CompareFunc {
@@ -58,22 +70,42 @@ const RandomPlayer = () => {
   const peoplesState = useSelector((state: RootStoreType) => state.peoples);
   const [cards, setCards] = useState<CardsState>(initialCardsState);
   const [points, setPoints] = useState<PointsState>(initialPointsState);
+  const [winner, setWinner] = useState("");
+
+  useEffect(() => {
+    setWinner(() => {
+      if (points.left.now > points.left.prev) {
+        return "leftCard";
+      } else if (points.right.now > points.right.prev) {
+        return "rightCard";
+      } else return "";
+    });
+    setTimeout(() => {
+      setWinner(() => "");
+    }, 2000);
+  }, [points]);
 
   useEffect(() => {
     setPoints((prevState) => {
       return {
-        left:
-          prevState.left +
-          compareCardPoints(cards.leftCard.data, cards.rightCard.data, [
-            "crew",
-            "mass",
-          ]),
-        right:
-          prevState.right +
-          compareCardPoints(cards.rightCard.data, cards.leftCard.data, [
-            "crew",
-            "mass",
-          ]),
+        left: {
+          prev: prevState.left.now,
+          now:
+            prevState.left.now +
+            compareCardPoints(cards.leftCard.data, cards.rightCard.data, [
+              "crew",
+              "mass",
+            ]),
+        },
+        right: {
+          prev: prevState.right.now,
+          now:
+            prevState.right.now +
+            compareCardPoints(cards.rightCard.data, cards.leftCard.data, [
+              "crew",
+              "mass",
+            ]),
+        },
       };
     });
   }, [cards]);
@@ -96,6 +128,7 @@ const RandomPlayer = () => {
     });
     return firstValue <= secondValue ? 0 : 1;
   };
+
   const setCardType = (value: string, cardType: string) => {
     //change type and return rest of object
     setCards(() => {
@@ -108,6 +141,7 @@ const RandomPlayer = () => {
       };
     });
   };
+
   const shuffleCards = () => {
     //change data and return rest of object
     let newState = {};
@@ -120,6 +154,7 @@ const RandomPlayer = () => {
         },
       };
     }
+
     setCards(() => {
       return {
         ...cards,
@@ -142,12 +177,25 @@ const RandomPlayer = () => {
     }
   };
 
+  const isWinner = (compareTo: string, compareWith: string) => {
+    let gettedPoint = compareCardPoints(
+      cards[compareTo].data,
+      cards[compareWith].data,
+      ["crew", "mass"]
+    );
+
+    if (gettedPoint === 0) {
+      return false;
+    } else return true;
+  };
+
   const resetGame = () => {
     setCards(() => {
       return {
         ...initialCardsState,
       };
     });
+
     setPoints(() => {
       return {
         ...initialPointsState,
@@ -157,12 +205,12 @@ const RandomPlayer = () => {
 
   return (
     <GameTemplate>
-      <GameTopBar
-        leftPoints={points.left}
-        rightPoints={points.right}
-      ></GameTopBar>
+      <GameTopBar leftPoints={points.left.now} rightPoints={points.right.now}>
+        <BaseButton onClick={resetGame}>Reset</BaseButton>
+      </GameTopBar>
       <StyledCardWrapper>
         <GameCard
+          winner={winner === "leftCard"}
           blueCard
           reversed={cards.leftCard.data === undefined}
           title={cards.leftCard.data?.name}
@@ -187,11 +235,13 @@ const RandomPlayer = () => {
         ></GameCard>
       </StyledCardWrapper>
       <div>
-        <BaseButton onClick={shuffleCards}>Start Game</BaseButton>
-        <BaseButton onClick={resetGame}>Reset</BaseButton>
+        <BaseButton onClick={shuffleCards} disabled={winner !== ""}>
+          Start Game
+        </BaseButton>
       </div>
       <StyledCardWrapper>
         <GameCard
+          winner={winner === "rightCard"}
           redCard
           reversed={cards.rightCard.data === undefined}
           title={cards.rightCard.data?.name}

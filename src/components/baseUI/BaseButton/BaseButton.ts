@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 const blow = keyframes`
   0% {
@@ -23,7 +23,11 @@ const blow = keyframes`
     }
 `;
 
-const BaseButton = styled.button`
+type ButtonTypes = {
+  disabled?: boolean;
+};
+
+const BaseButton = styled.button<ButtonTypes>`
   background-color: ${({ theme }) => theme.yellow};
   color: ${({ theme }) => theme.white};
   padding: 8px 16px;
@@ -32,6 +36,14 @@ const BaseButton = styled.button`
   cursor: pointer;
   position: relative;
   transition: all 0.3s ease;
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+     opacity: 0.7;
+     pointer-events: none;
+      }
+    `}
 
   &::before,
   &::after {
