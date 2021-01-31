@@ -10,6 +10,7 @@ import { StarshipType } from "src/actions/starship/StarshipActionTypes";
 import { PeopleType } from "src/actions/people/PeopleActionTypes";
 import BaseSelect from "src/components/baseUI/BaseSelect/BaseSelect";
 import GameTopBar from "src/components/commonUI/GameTopBar/GameTopBar";
+import { getKeyPressed } from "src/utils/keyboardUtils";
 
 const StyledCardWrapper = styled.div`
   margin: 20px;
@@ -71,7 +72,12 @@ const RandomPlayer = () => {
   const [cards, setCards] = useState<CardsState>(initialCardsState);
   const [points, setPoints] = useState<PointsState>(initialPointsState);
   const [winner, setWinner] = useState("");
-
+  const spacePress = getKeyPressed(" ");
+  useEffect(() => {
+    if (spacePress && winner === "") {
+      shuffleCards();
+    }
+  }, [spacePress]);
   useEffect(() => {
     setWinner(() => {
       if (points.left.now > points.left.prev) {
@@ -108,7 +114,7 @@ const RandomPlayer = () => {
         },
       };
     });
-  }, [cards]);
+  }, [cards.leftCard.data || cards.rightCard.data]);
 
   const compareCardPoints: CompareFunc = (
     compareTo,
@@ -216,13 +222,9 @@ const RandomPlayer = () => {
           title={cards.leftCard.data?.name}
           description={
             cards.leftCard.data?.cardType === "people" ? (
-              <ul>
-                <li> Mass:{cards.leftCard.data?.mass}</li>
-              </ul>
+              <p>Mass:{cards.leftCard.data?.mass}</p>
             ) : (
-              <ul>
-                <li> Crew: {cards.leftCard.data?.crew}</li>
-              </ul>
+              <p> Crew: {cards.leftCard.data?.crew}</p>
             )
           }
           actions={
@@ -236,7 +238,7 @@ const RandomPlayer = () => {
       </StyledCardWrapper>
       <div>
         <BaseButton onClick={shuffleCards} disabled={winner !== ""}>
-          Start Game
+          Play
         </BaseButton>
       </div>
       <StyledCardWrapper>
@@ -247,13 +249,9 @@ const RandomPlayer = () => {
           title={cards.rightCard.data?.name}
           description={
             cards.rightCard.data?.cardType === "people" ? (
-              <ul>
-                <li> Mass:{cards.rightCard.data?.mass}</li>
-              </ul>
+              <p>Mass:{cards.rightCard.data?.mass}</p>
             ) : (
-              <ul>
-                <li> Crew: {cards.rightCard.data?.crew}</li>
-              </ul>
+              <p>Crew: {cards.rightCard.data?.crew}</p>
             )
           }
           actions={

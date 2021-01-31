@@ -43,6 +43,7 @@ const GameTopBar: React.FC<GameTopBarProps> = ({
   <StyledTopBarWrapper>
     <GamePoints>
       <Points>{leftPoints}</Points>
+      {children}
       <Points secondary>{rightPoints}</Points>
     </GamePoints>
   </StyledTopBarWrapper>

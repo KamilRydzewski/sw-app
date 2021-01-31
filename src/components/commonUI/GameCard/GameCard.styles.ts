@@ -123,11 +123,12 @@ export const CardTitle = styled.h3`
   text-align: center;
   color: ${({ theme }) => theme.white};
   word-break: break-all;
+  max-height: 100px;
 
   @media all and (max-width: ${({ theme }) => theme.bpMobile}) {
     font-size: ${({ theme }) => theme.fontSize.xs};
     max-height: 50px;
-    padding: 5px 10;
+    padding: 5px 10px;
   }
 `;
 
@@ -152,6 +153,7 @@ export const CardParameterContainer = styled.div<CardParameterType>`
   padding: 10px;
   width: 150px;
   height: 150px;
+  text-align: center;
 
   ${({ redCard }) =>
     redCard &&
@@ -175,7 +177,7 @@ export const CardParameterContainer = styled.div<CardParameterType>`
     font-size: ${({ theme }) => theme.fontSize.xxs};
     width: 70px;
     height: 70px;
-    text-align: center;
+
     word-break: break-all;
   }
 `;
