@@ -59,6 +59,7 @@ const GameCard: React.FC<GameCardI> = ({
             <StyledIconWrapper>
               <img src={jediIcon} alt="jedi icon"></img>
             </StyledIconWrapper>
+            <CardActions>{actions}</CardActions>
           </>
         ) : (
           <>
