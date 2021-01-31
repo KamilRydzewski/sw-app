@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/sw-app/static/css/main.c18068b2.chunk.css",
+    "main.js": "/sw-app/static/js/main.c87f424e.chunk.js",
+    "main.js.map": "/sw-app/static/js/main.c87f424e.chunk.js.map",
+    "runtime-main.js": "/sw-app/static/js/runtime-main.8a3a43ae.js",
+    "runtime-main.js.map": "/sw-app/static/js/runtime-main.8a3a43ae.js.map",
+    "static/js/2.751e4d9c.chunk.js": "/sw-app/static/js/2.751e4d9c.chunk.js",
+    "static/js/2.751e4d9c.chunk.js.map": "/sw-app/static/js/2.751e4d9c.chunk.js.map",
+    "static/js/3.93e8c5b6.chunk.js": "/sw-app/static/js/3.93e8c5b6.chunk.js",
+    "static/js/3.93e8c5b6.chunk.js.map": "/sw-app/static/js/3.93e8c5b6.chunk.js.map",
+    "index.html": "/sw-app/index.html",
+    "static/css/main.c18068b2.chunk.css.map": "/sw-app/static/css/main.c18068b2.chunk.css.map",
+    "static/js/2.751e4d9c.chunk.js.LICENSE.txt": "/sw-app/static/js/2.751e4d9c.chunk.js.LICENSE.txt",
+    "static/media/jedi.c6b3e6ff.png": "/sw-app/static/media/jedi.c6b3e6ff.png",
+    "static/media/star-wars.3d9d3261.svg": "/sw-app/static/media/star-wars.3d9d3261.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8a3a43ae.js",
+    "static/js/2.751e4d9c.chunk.js",
+    "static/css/main.c18068b2.chunk.css",
+    "static/js/main.c87f424e.chunk.js"
+  ]
+}
