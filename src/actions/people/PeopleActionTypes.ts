@@ -12,7 +12,7 @@ export type PeopleType = {
   url: string;
 };
 
-export type PeoplesType = {
+export type PeopleResponseType = {
   count: number;
   next: string;
   previous: string;

@@ -20,21 +20,16 @@ export async function fetchRestOfList(
     .map((item) => item.data.results)
     .flat();
 }
-
-type UrlData = {
-  url: string;
-};
-
-export function getAndSetIdFromUrl(data: UrlData) {
+export function setIdFromUrl(data: StarshipType) {
   let urlDecrypted = data.url.split("/");
   return { ...data, id: parseInt(urlDecrypted[urlDecrypted.length - 2]) };
 }
-export function getAndSetTypeFromUrl(data: UrlData) {
+export function setTypeFromUrl(data: StarshipType) {
   let urlDecrypted = data.url.split("/");
   return { ...data, cardType: urlDecrypted[urlDecrypted.length - 3] };
 }
 
-export function setTypeAndIdFromUrl(data: UrlData) {
+export function setTypeAndIdFromUrl(data: PeopleType) {
   let urlDecrypted = data.url.split("/");
   return {
     ...data,

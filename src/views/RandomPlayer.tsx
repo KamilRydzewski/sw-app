@@ -150,7 +150,6 @@ const RandomPlayer = () => {
 
   const shuffleCards = () => {
     //change data and return rest of object
-    console.log(cards);
     let newState = {};
     for (const card in cards) {
       newState = {

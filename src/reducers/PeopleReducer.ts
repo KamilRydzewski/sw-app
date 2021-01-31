@@ -18,7 +18,6 @@ const peopleReducer = (
   state: DefaultStateI = defaultState,
   action: PeopleDispatchTypes
 ): DefaultStateI => {
-  console.log(action);
   switch (action.type) {
     case GET_PEOPLE_REUEST:
       return {

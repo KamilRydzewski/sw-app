@@ -1,6 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const BaseMenuLink = styled.button`
+type MenuLinkType = {
+  disabled?: boolean;
+};
+
+const BaseMenuLink = styled.button<MenuLinkType>`
   color: ${({ theme }) => theme.yellow};
   font-weight: ${({ theme }) => theme.bold};
   font-size: ${({ theme }) => theme.fontSize.xl};
@@ -10,6 +14,13 @@ const BaseMenuLink = styled.button`
   border: none;
   text-decoration: none;
   display: block;
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      opacity: 0.3;
+      pointer-events: none;
+    `}
 
   @media all and (max-width: ${({ theme }) => theme.bpMobile}) {
     font-size: ${({ theme }) => theme.fontSize.m};

@@ -46,7 +46,7 @@ const MainNavigation: React.FC = () => {
       setFocused((prevState) => (prevState > 0 ? prevState - 1 : prevState));
     }
   }, [upPress]);
-  return enterPress ? (
+  return enterPress && !NavigationSchema[focused].disabled ? (
     <Redirect push to={NavigationSchema[focused].to} />
   ) : (
     <StyledNavList>
@@ -56,7 +56,7 @@ const MainNavigation: React.FC = () => {
           focused={focused === index}
           onMouseEnter={() => setFocused(index)}
         >
-          <BaseMenuLink as={NavLink} to={link.to}>
+          <BaseMenuLink disabled={link?.disabled} as={NavLink} to={link.to}>
             {link.name}
           </BaseMenuLink>
         </StyledNavItem>

@@ -5,11 +5,9 @@ import { useEffect, useRef } from "react";
 import GalaxyBackground from "src/components/commonUI/GalaxyBackground/GalaxyBackground";
 import { getKeyPressed } from "src/utils/keyboardUtils";
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { RootStoreType } from "src/store/index";
+import { useDispatch } from "react-redux";
 import { GetStarships } from "src/actions/starship/StarshipActions";
 import { GetPeople } from "src/actions/people/PeopleActions";
-import BaseButton from "src/components/baseUI/BaseButton/BaseButton";
 
 const MainTemplate: React.FC = ({ children }) => {
   const dispatch = useDispatch();

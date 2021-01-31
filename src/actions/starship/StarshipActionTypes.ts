@@ -13,7 +13,7 @@ export type StarshipType = {
   url: string;
 };
 
-export type StarshipsType = {
+export type StarshipResponseType = {
   count: number;
   next: string;
   previous: string;

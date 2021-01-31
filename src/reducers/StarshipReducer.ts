@@ -18,7 +18,6 @@ const starshipReducer = (
   state: DefaultStateI = defaultState,
   action: StarshipDispatchTypes
 ): DefaultStateI => {
-  console.log(action);
   switch (action.type) {
     case GET_STARSHIP_REUEST:
       return {

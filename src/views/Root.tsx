@@ -7,8 +7,6 @@ import RandomPlayer from "src/views/RandomPlayer";
 import NotFound from "src/views/NotFound";
 import InProgress from "src/views/InProgress";
 import MainTemplate from "src/templates/MainTemplate";
-// import SinglePlayer from "src/views/SinglePlayer";
-// import MultiPlayer from "src/views/MultiPlayer";
 
 const Root = () => {
   return (
