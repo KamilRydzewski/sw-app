@@ -1,6 +1,6 @@
 import { Provider } from "react-redux";
 import Store from "src/store/index";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import { routes } from "src/routes";
 import Menu from "src/views/Menu";
 import RandomPlayer from "src/views/RandomPlayer";
@@ -13,7 +13,7 @@ import MainTemplate from "src/templates/MainTemplate";
 const Root = () => {
   return (
     <Provider store={Store}>
-      <BrowserRouter>
+      <HashRouter>
         <MainTemplate>
           <Switch>
             <Route
@@ -31,7 +31,7 @@ const Root = () => {
             <Route exact component={NotFound} />
           </Switch>
         </MainTemplate>
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   );
 };

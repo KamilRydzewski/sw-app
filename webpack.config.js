@@ -7,5 +7,10 @@ module.exports = {
         loader: "file-loader?name=assets/[name].[ext]",
       },
     ],
+    devServer: {
+      historyApiFallback: true,
+      contentBase: "./",
+      hot: true,
+    },
   },
 };
