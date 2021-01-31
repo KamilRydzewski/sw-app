@@ -183,18 +183,6 @@ const RandomPlayer = () => {
     }
   };
 
-  const isWinner = (compareTo: string, compareWith: string) => {
-    let gettedPoint = compareCardPoints(
-      cards[compareTo].data,
-      cards[compareWith].data,
-      ["crew", "mass"]
-    );
-
-    if (gettedPoint === 0) {
-      return false;
-    } else return true;
-  };
-
   const resetGame = () => {
     setCards(() => {
       return {

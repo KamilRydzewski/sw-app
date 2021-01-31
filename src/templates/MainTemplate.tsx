@@ -10,12 +10,12 @@ import { RootStoreType } from "src/store/index";
 import { GetStarships } from "src/actions/starship/StarshipActions";
 import { GetPeople } from "src/actions/people/PeopleActions";
 import BaseButton from "src/components/baseUI/BaseButton/BaseButton";
+
 const MainTemplate: React.FC = ({ children }) => {
   const dispatch = useDispatch();
   const starshipsState = useSelector((state: RootStoreType) => state.starships);
   const peopleState = useSelector((state: RootStoreType) => state.people);
   const isMounted = useRef(false);
-
   useEffect(() => {
     dispatch(GetStarships());
     dispatch(GetPeople());

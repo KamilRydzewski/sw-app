@@ -6,9 +6,9 @@ import Menu from "src/views/Menu";
 import RandomPlayer from "src/views/RandomPlayer";
 import NotFound from "src/views/NotFound";
 import InProgress from "src/views/InProgress";
-import SinglePlayer from "src/views/SinglePlayer";
-import MultiPlayer from "src/views/MultiPlayer";
 import MainTemplate from "src/templates/MainTemplate";
+// import SinglePlayer from "src/views/SinglePlayer";
+// import MultiPlayer from "src/views/MultiPlayer";
 
 const Root = () => {
   return (
@@ -22,6 +22,7 @@ const Root = () => {
               render={() => <Redirect to="/menu" />}
             />
             <Route exact path={routes.menu} component={Menu} />
+            <Route exact path="/sw-app" component={Menu} />
             <Route exact path={routes.random} component={RandomPlayer} />
             <Route exact path={routes.singlePlayer} component={InProgress} />
             <Route exact path={routes.multiPlayer} component={InProgress} />
