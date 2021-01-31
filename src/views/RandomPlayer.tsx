@@ -82,7 +82,7 @@ const RandomPlayer = () => {
     });
     setTimeout(() => {
       setWinner(() => "");
-    }, 2000);
+    }, 3000);
   }, [points]);
 
   useEffect(() => {
