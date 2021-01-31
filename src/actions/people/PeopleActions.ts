@@ -8,6 +8,7 @@ import {
   PeopleType,
 } from "./PeopleActionTypes";
 import { fetchRestOfList, setTypeAndIdFromUrl } from "src/utils/actionsUtils";
+import { parseToNumber } from "src/utils/commonUtils";
 
 export const GetPeoples = () => async (
   dispatch: Dispatch<PeopleDispatchTypes>
@@ -29,6 +30,12 @@ export const GetPeoples = () => async (
         );
         peoplesList.push(...response.data.results, ...restPeoples);
         peoplesList = peoplesList.map((item) => setTypeAndIdFromUrl(item));
+        peoplesList = peoplesList.map((people) => {
+          return {
+            ...people,
+            mass: parseToNumber(people.mass),
+          };
+        });
       });
     dispatch({
       type: GET_PEOPLE_SUCCESS,

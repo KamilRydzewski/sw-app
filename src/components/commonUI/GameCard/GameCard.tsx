@@ -15,6 +15,8 @@ interface GameCardI {
   description?: any;
   actions?: any;
   reversed?: boolean;
+  redCard?: boolean;
+  blueCard?: boolean;
 }
 
 const StyledIconWrapper = styled.div`
@@ -43,9 +45,11 @@ const GameCard: React.FC<GameCardI> = ({
   description,
   actions,
   reversed,
+  redCard,
+  blueCard,
 }) => {
   return (
-    <Wrapper>
+    <Wrapper redCard={redCard} blueCard={blueCard}>
       <Container>
         {reversed ? (
           <>

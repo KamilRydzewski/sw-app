@@ -14,5 +14,6 @@ export function parseToNumber(
 }
 
 export function getRandomObj(array: any) {
+  if (array === undefined) return;
   return array[Math.floor(Math.random() * array.length)];
 }

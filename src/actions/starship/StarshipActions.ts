@@ -8,6 +8,7 @@ import {
   StarshipType,
 } from "./StarshipActionTypes";
 import { fetchRestOfList, getAndSetIdFromUrl } from "src/utils/actionsUtils";
+import { parseToNumber } from "src/utils/commonUtils";
 
 export const GetStarships = () => async (
   dispatch: Dispatch<StarshipDispatchTypes>
@@ -29,6 +30,12 @@ export const GetStarships = () => async (
         );
         shipsList.push(...response.data.results, ...restShips);
         shipsList = shipsList.map((item) => getAndSetIdFromUrl(item));
+        shipsList = shipsList.map((ship) => {
+          return {
+            ...ship,
+            crew: parseToNumber(ship.crew),
+          };
+        });
       });
     dispatch({
       type: GET_STARSHIP_SUCCESS,

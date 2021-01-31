@@ -1,7 +1,12 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const Wrapper = styled.div`
-  padding: 10px;
+interface ICardTypes {
+  redCard?: boolean;
+  blueCard?: boolean;
+}
+
+export const Wrapper = styled.div<ICardTypes>`
+  border: 6px solid transparent;
   border-radius: 5px;
   width: 300px;
   height: 400px;
@@ -12,6 +17,28 @@ export const Wrapper = styled.div`
     box-shadow: 0 0 10px ${({ theme }) => theme.white};
     transform: scale(1.02);
   }
+
+  ${({ blueCard }) =>
+    blueCard &&
+    css`
+      border: 6px solid ${({ theme }) => theme.blueTransparent};
+      box-shadow: 0 0 5px ${({ theme }) => theme.blue};
+
+      &:hover {
+        box-shadow: 0 0 10px ${({ theme }) => theme.blue};
+        transform: scale(1.02);
+      }
+    `}
+  ${({ redCard }) =>
+    redCard &&
+    css`
+      border: 6px solid ${({ theme }) => theme.redTransparent};
+      box-shadow: 0 0 5px ${({ theme }) => theme.red};
+      &:hover {
+        box-shadow: 0 0 10px ${({ theme }) => theme.red};
+        transform: scale(1.02);
+      }
+    `}
 
   @media all and (max-width: ${({ theme }) => theme.bpTablet}) {
     width: 225px;
@@ -56,8 +83,6 @@ export const CardParameter = styled.div`
 `;
 
 export const CardActions = styled.div`
-  background: gray;
-  opacity: 0.2;
   align-self: flex-end;
   margin-top: auto;
 `;
