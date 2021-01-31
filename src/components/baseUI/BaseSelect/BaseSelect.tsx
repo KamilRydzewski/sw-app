@@ -49,10 +49,10 @@ const BaseSelect: React.FC<Props> = ({
   values,
 }) => {
   const classes = useStyles();
-  const [value, setAge] = useState(initialValue);
+  const [value, setValue] = useState(initialValue);
 
   const handleChange = (event: object | any): void => {
-    setAge(event.target.value);
+    setValue(event.target.value);
     handleSelect(event.target.value);
   };
 

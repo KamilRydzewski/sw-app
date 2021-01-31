@@ -53,26 +53,22 @@ const GameCard: React.FC<GameCardI> = ({
   return (
     <Wrapper redCard={redCard} blueCard={blueCard} winner={winner}>
       <Container faceUp={!reversed}>
+        <CardBackground></CardBackground>
         {reversed ? (
-          <>
-            <CardBackground></CardBackground>
-            <StyledIconWrapper>
-              <img src={jediIcon} alt="jedi icon"></img>
-            </StyledIconWrapper>
-            <CardActions>{actions}</CardActions>
-          </>
+          <StyledIconWrapper>
+            <img src={jediIcon} alt="jedi icon"></img>
+          </StyledIconWrapper>
         ) : (
           <>
-            <CardBackground></CardBackground>
             <CardTitle>{title}</CardTitle>
             <CardParameter>
               <CardParameterContainer redCard={redCard} blueCard={blueCard}>
                 {description}
               </CardParameterContainer>
             </CardParameter>
-            <CardActions>{actions}</CardActions>
           </>
         )}
+        <CardActions>{actions}</CardActions>
       </Container>
     </Wrapper>
   );

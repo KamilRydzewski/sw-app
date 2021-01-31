@@ -87,7 +87,7 @@ const RandomPlayer = () => {
       } else return "";
     });
     setTimeout(() => {
-      setWinner(() => "");
+      setWinner("");
     }, 3000);
   }, [points]);
 
@@ -150,6 +150,7 @@ const RandomPlayer = () => {
 
   const shuffleCards = () => {
     //change data and return rest of object
+    console.log(cards);
     let newState = {};
     for (const card in cards) {
       newState = {
@@ -161,11 +162,9 @@ const RandomPlayer = () => {
       };
     }
 
-    setCards(() => {
-      return {
-        ...cards,
-        ...newState,
-      };
+    setCards({
+      ...cards,
+      ...newState,
     });
   };
 
@@ -184,17 +183,8 @@ const RandomPlayer = () => {
   };
 
   const resetGame = () => {
-    setCards(() => {
-      return {
-        ...initialCardsState,
-      };
-    });
-
-    setPoints(() => {
-      return {
-        ...initialPointsState,
-      };
-    });
+    setCards({ ...initialCardsState });
+    setPoints({ ...initialPointsState });
   };
 
   return (

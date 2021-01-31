@@ -45,13 +45,9 @@ const GameTemplate: React.FC = ({ children }) => {
       !starshipsState.hasOwnProperty("starships") &&
       !peopleState.hasOwnProperty("people")
     ) {
-      setLoading(() => {
-        return true;
-      });
+      setLoading(true);
     } else {
-      setLoading(() => {
-        return false;
-      });
+      setLoading(false);
     }
   }, [starshipsState && peopleState]);
 
