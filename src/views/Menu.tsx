@@ -1,6 +1,3 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { GetStarships } from "src/actions/starship/StarshipActions";
 import MainNavigation from "src/components/commonUI/Navigation/MainNavigation";
 import { ReactComponent as StarWarsLogo } from "src/assets/images/star-wars.svg";
 import styled from "styled-components";
@@ -22,8 +19,6 @@ const StyledLogo = styled(StarWarsLogo)`
 `;
 
 const Menu: React.FC = () => {
-  const dispatch = useDispatch();
-  const handle = () => dispatch(GetStarships());
   return (
     <>
       <StyledLogo />

@@ -8,7 +8,7 @@ import {
 
 interface DefaultStateI {
   loading: boolean;
-  peoples?: PeopleType[];
+  people?: PeopleType[];
 }
 
 const defaultState: DefaultStateI = {
@@ -31,7 +31,7 @@ const peopleReducer = (
     case GET_PEOPLE_SUCCESS:
       return {
         loading: false,
-        peoples: action.payload,
+        people: action.payload,
       };
     default:
       return state;

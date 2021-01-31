@@ -68,7 +68,7 @@ interface CompareFunc {
 }
 const RandomPlayer = () => {
   const starshipsState = useSelector((state: RootStoreType) => state.starships);
-  const peoplesState = useSelector((state: RootStoreType) => state.peoples);
+  const peopleState = useSelector((state: RootStoreType) => state.people);
   const [cards, setCards] = useState<CardsState>(initialCardsState);
   const [points, setPoints] = useState<PointsState>(initialPointsState);
   const [winner, setWinner] = useState("");
@@ -171,15 +171,15 @@ const RandomPlayer = () => {
 
   const getPackOfCards = (type: string) => {
     if (type === "People") {
-      return peoplesState.peoples;
+      return peopleState.people;
     } else if (type === "Ships") {
       return starshipsState.starships;
     } else if (
       type === "All" &&
       starshipsState.starships !== undefined &&
-      peoplesState.peoples !== undefined
+      peopleState.people !== undefined
     ) {
-      return [...starshipsState.starships, ...peoplesState.peoples];
+      return [...starshipsState.starships, ...peopleState.people];
     }
   };
 

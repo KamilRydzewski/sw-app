@@ -4,6 +4,6 @@ import peopleReducer from "./PeopleReducer";
 
 const RootReducer = combineReducers({
   starships: starshipReducer,
-  peoples: peopleReducer,
+  people: peopleReducer,
 });
 export default RootReducer;

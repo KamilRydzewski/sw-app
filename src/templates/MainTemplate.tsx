@@ -8,16 +8,17 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStoreType } from "src/store/index";
 import { GetStarships } from "src/actions/starship/StarshipActions";
-import { GetPeoples } from "src/actions/people/PeopleActions";
-
+import { GetPeople } from "src/actions/people/PeopleActions";
+import BaseButton from "src/components/baseUI/BaseButton/BaseButton";
 const MainTemplate: React.FC = ({ children }) => {
   const dispatch = useDispatch();
   const starshipsState = useSelector((state: RootStoreType) => state.starships);
-  const peoplesState = useSelector((state: RootStoreType) => state.peoples);
+  const peopleState = useSelector((state: RootStoreType) => state.people);
   const isMounted = useRef(false);
+
   useEffect(() => {
     dispatch(GetStarships());
-    dispatch(GetPeoples());
+    dispatch(GetPeople());
   }, []);
   const escPress = getKeyPressed("Escape");
   let history = useHistory();

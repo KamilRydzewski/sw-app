@@ -20,13 +20,13 @@ export const GetStarships = () => async (
   try {
     let shipsList: any[] = [];
     const fetchedShips = await axios
-      .get(`${process.env.REACT_APP_STAR_WARS_API}/starships`)
+      .get(`${process.env.REACT_APP_STAR_WARS_API}/starships/`)
       .then(async (response) => {
         const { count, results } = response.data;
         const restShips = await fetchRestOfList(
           count,
           results.length,
-          "starships"
+          "starships/"
         );
         shipsList.push(...response.data.results, ...restShips);
         shipsList = shipsList.map((item) => getAndSetIdFromUrl(item));

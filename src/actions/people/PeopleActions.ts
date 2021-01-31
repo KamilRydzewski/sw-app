@@ -10,7 +10,7 @@ import {
 import { fetchRestOfList, setTypeAndIdFromUrl } from "src/utils/actionsUtils";
 import { parseToNumber } from "src/utils/commonUtils";
 
-export const GetPeoples = () => async (
+export const GetPeople = () => async (
   dispatch: Dispatch<PeopleDispatchTypes>
 ) => {
   dispatch({
@@ -18,31 +18,31 @@ export const GetPeoples = () => async (
   });
 
   try {
-    let peoplesList: any[] = [];
-    const fetchedPeoples = await axios
-      .get(`${process.env.REACT_APP_STAR_WARS_API}/people`)
+    let peopleList: any[] = [];
+    const fetchedpeople = await axios
+      .get(`${process.env.REACT_APP_STAR_WARS_API}/people/`)
       .then(async (response) => {
         const { count, results } = response.data;
-        const restPeoples = await fetchRestOfList(
+        const restpeople = await fetchRestOfList(
           count,
           results.length,
-          "people"
+          "people/"
         );
-        peoplesList.push(...response.data.results, ...restPeoples);
-        peoplesList = peoplesList.map((item) => setTypeAndIdFromUrl(item));
-        peoplesList = peoplesList.map((people) => {
+        peopleList.push(...response.data.results, ...restpeople);
+        peopleList = peopleList.map((item) => setTypeAndIdFromUrl(item));
+        peopleList = peopleList.map((person) => {
           return {
-            ...people,
-            mass: parseToNumber(people.mass),
+            ...person,
+            mass: parseToNumber(person.mass),
           };
         });
       });
     dispatch({
       type: GET_PEOPLE_SUCCESS,
-      payload: peoplesList,
+      payload: peopleList,
     });
   } catch (error) {
-    console.log("Can't get peoples" + error);
+    console.log("Can't get people" + error);
     dispatch({
       type: GET_PEOPLE_FAILURE,
     });
