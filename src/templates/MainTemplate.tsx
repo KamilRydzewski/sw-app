@@ -21,7 +21,6 @@ const MainTemplate: React.FC = ({ children }) => {
   const escPress = getKeyPressed("Escape");
   let history = useHistory();
   useEffect(() => {
-    console.log(location);
     if (
       isMounted.current &&
       location.hash !== "#/menu" &&
