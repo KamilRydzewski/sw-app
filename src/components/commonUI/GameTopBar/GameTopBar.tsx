@@ -12,6 +12,7 @@ const StyledTopBarWrapper = styled.div`
 `;
 const GamePoints = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 interface IPoints {
