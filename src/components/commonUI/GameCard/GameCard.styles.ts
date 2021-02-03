@@ -221,11 +221,13 @@ export const CardTitle = styled.h3`
   text-align: center;
   color: ${({ theme }) => theme.white};
   word-break: break-all;
-  max-height: 100px;
+  min-height: 70px;
+  height: 70px;
 
-  @media all and (max-width: ${({ theme }) => theme.bpMobile}) {
+  @media all and (max-width: ${({ theme }) => theme.bpTablet}) {
     font-size: ${({ theme }) => theme.fontSize.xs};
-    max-height: 50px;
+    height: 35px;
+    min-height: 35px;
     padding: 5px 10px;
   }
 `;
