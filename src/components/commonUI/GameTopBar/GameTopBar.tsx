@@ -37,12 +37,12 @@ type GameTopBarProps = {
 };
 
 const GameTopBar: React.FC<GameTopBarProps> = ({
-  leftPoints,
-  rightPoints,
+  leftPoints = 0,
+  rightPoints = 0,
   children,
 }) => (
-  <StyledTopBarWrapper>
-    <GamePoints>
+  <StyledTopBarWrapper data-testid="game-top-bar">
+    <GamePoints >
       <Points>{leftPoints}</Points>
       {children}
       <Points secondary>{rightPoints}</Points>

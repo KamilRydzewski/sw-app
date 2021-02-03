@@ -49,9 +49,10 @@ const MainNavigation: React.FC = () => {
   return enterPress && !NavigationSchema[focused].disabled ? (
     <Redirect push to={NavigationSchema[focused].to} />
   ) : (
-    <StyledNavList>
+    <StyledNavList data-testid="main-navigation">
       {NavigationSchema.map((link, index) => (
         <StyledNavItem
+        data-testid={link.to}
           key={index}
           focused={focused === index}
           onMouseEnter={() => setFocused(index)}
