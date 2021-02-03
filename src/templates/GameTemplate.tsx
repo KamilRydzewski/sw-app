@@ -52,7 +52,7 @@ const GameTemplate: React.FC = ({ children }) => {
   }, [starshipsState && peopleState]);
 
   return (
-    <StyledSection>
+    <StyledSection data-testid="game-template">
       {loading ? (
         <LoaderWrapper>
           <BaseLoader></BaseLoader>
