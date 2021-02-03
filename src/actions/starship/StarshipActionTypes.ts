@@ -1,24 +1,16 @@
+import { CardType, ResponseType } from "src/types/mainTypes";
+
 export const GET_STARSHIP_REUEST = "GET_STARSHIP_REQUEST";
 export const GET_STARSHIP_FAILURE = "GET_STARSHIP_FAILURE";
 export const GET_STARSHIP_SUCCESS = "GET_STARSHIP_SUCCESS";
 
-export type StarshipType = {
-  id?: number;
-  cardType?: string;
-  name: string;
-  model: string;
-  passengers: number;
-  manufacturer: string;
-  crew: number;
-  url: string;
-};
+export interface StarshipType extends CardType {
+  crew?: number;
+}
 
-export type StarshipResponseType = {
-  count: number;
-  next: string;
-  previous: string;
+export interface StarshipResponseType extends ResponseType {
   results: StarshipType[];
-};
+}
 export interface StarshipRequestI {
   type: typeof GET_STARSHIP_REUEST;
 }

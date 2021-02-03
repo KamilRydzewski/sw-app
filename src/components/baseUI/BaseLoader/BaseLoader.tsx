@@ -31,7 +31,7 @@ const StyledLoader = styled(LoaderIcon)`
 `;
 const BaseLoader: React.FC = () => {
   return (
-    <StyledWrapper>
+    <StyledWrapper data-testid="base-loader">
       <StyledLoader></StyledLoader>;
     </StyledWrapper>
   );

@@ -4,7 +4,7 @@ type Key = {
   key: string;
 };
 
-export const getKeyPressed = (targetKey: string) => {
+export const getKeyPressed = (targetKey: string): boolean => {
   const [keyPressed, setKeyPressed] = useState(false);
 
   function downHandler({ key }: Key) {

@@ -14,7 +14,7 @@ import { parseToNumber } from "src/utils/commonUtils";
 const PEOPLE_ENDPOINT = `${process.env.REACT_APP_STAR_WARS_API}/people/`;
 export const GetPeople = () => async (
   dispatch: Dispatch<PeopleDispatchTypes>
-) => {
+): Promise<void> => {
   dispatch({
     type: GET_PEOPLE_REUEST,
   });
@@ -37,7 +37,6 @@ export const GetPeople = () => async (
             mass: parseToNumber(person.mass),
           };
         });
-        console.log(peopleList);
       dispatch({
         type: GET_PEOPLE_SUCCESS,
         payload: peopleList,

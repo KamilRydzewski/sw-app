@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-
+import { ReactNode } from "react";
 const StyledTopBarWrapper = styled.div`
   position: fixed;
   top: 0;
@@ -33,7 +33,7 @@ const Points = styled.p<IPoints>`
 type GameTopBarProps = {
   leftPoints?: number;
   rightPoints?: number;
-  children?: any;
+  children?: ReactNode | React.FC;
 };
 
 const GameTopBar: React.FC<GameTopBarProps> = ({

@@ -8,7 +8,7 @@ import NotFound from "src/views/NotFound";
 import InProgress from "src/views/InProgress";
 import MainTemplate from "src/templates/MainTemplate";
 
-const Root = () => {
+const Root: React.FC = () => {
   return (
     <Provider store={Store}>
       <HashRouter>

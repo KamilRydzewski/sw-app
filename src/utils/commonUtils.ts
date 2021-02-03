@@ -1,3 +1,5 @@
+import { CardType } from "src/types/mainTypes";
+
 export function parseToNumber(
   value: string | number | undefined | null
 ): number {
@@ -13,7 +15,10 @@ export function parseToNumber(
   }
 }
 
-export function getRandomObj(array: any) {
-  if (array === undefined) return;
-  return array[Math.floor(Math.random() * array.length)];
+export function getRandomObj<T extends CardType>(
+  array: T[] | undefined
+): T | undefined {
+  if (array !== undefined) {
+    return array[Math.floor(Math.random() * array.length)];
+  }
 }

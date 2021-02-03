@@ -37,30 +37,36 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+type HandleSelectType = (e: string) => void;
+
 type Props = {
-  handleSelect: any;
-  initialValue: number | string;
-  values: string[];
+  handleSelect?: HandleSelectType;
+  initialValue?: string;
+  values?: string[];
+  label?: string;
 };
 
 const BaseSelect: React.FC<Props> = ({
-  handleSelect,
-  initialValue,
-  values,
+  handleSelect = (fieldValue: string) => {
+    console.log(fieldValue);
+  },
+  initialValue = "1",
+  values = ["1", "2", "3"],
+  label = "Label",
 }) => {
   const classes = useStyles();
   const [value, setValue] = useState(initialValue);
 
-  const handleChange = (event: object | any): void => {
-    setValue(event.target.value);
-    handleSelect(event.target.value);
+  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setValue(event.target.value as string);
+    handleSelect(event.target.value as string);
   };
 
   return (
     <div>
-      <FormControl className={classes.formControl}>
+      <FormControl className={classes.formControl} data-testid="base-select">
         <InputLabel className={classes.label} id="demo-simple-select-label">
-          Type
+          {label}
         </InputLabel>
         <Select
           className={classes.select}

@@ -1,14 +1,13 @@
 import axios from "axios";
-import { StarshipType } from "src/actions/starship/StarshipActionTypes";
-import { PeopleType } from "src/actions/people/PeopleActionTypes";
+import { CardType } from "src/types/mainTypes";
 
-export async function fetchRestOfList(
+export async function fetchRestOfList<T extends CardType>(
   total: number,
   onPage: number,
   endpoint: string
-) {
+): Promise<T[]> {
   const totalPages: number = Math.ceil(total / onPage);
-  let promises = [];
+  const promises = [];
   for (let nextPage = 2; nextPage <= totalPages; nextPage++) {
     promises.push(
       axios.get(
@@ -20,17 +19,18 @@ export async function fetchRestOfList(
     .map((item) => item.data.results)
     .flat();
 }
-export function setIdFromUrl(data: StarshipType) {
-  let urlDecrypted = data.url.split("/");
+
+export function setIdFromUrl<T extends CardType>(data: T): T {
+  const urlDecrypted = data.url.split("/");
   return { ...data, id: parseInt(urlDecrypted[urlDecrypted.length - 2]) };
 }
-export function setTypeFromUrl(data: StarshipType) {
-  let urlDecrypted = data.url.split("/");
+export function setTypeFromUrl<T extends CardType>(data: T): T {
+  const urlDecrypted = data.url.split("/");
   return { ...data, cardType: urlDecrypted[urlDecrypted.length - 3] };
 }
 
-export function setTypeAndIdFromUrl(data: PeopleType) {
-  let urlDecrypted = data.url.split("/");
+export function setTypeAndIdFromUrl<T extends CardType>(data: T): T {
+  const urlDecrypted = data.url.split("/");
   return {
     ...data,
     cardType: urlDecrypted[urlDecrypted.length - 3],

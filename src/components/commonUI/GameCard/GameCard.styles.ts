@@ -1,4 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
+import { ReactComponent as People } from "src/assets/images/darth-vader.svg";
+import { ReactComponent as StarShip } from "src/assets/images/smallship.svg";
 interface ICardTypes {
   redCard?: boolean;
   blueCard?: boolean;
@@ -12,8 +14,104 @@ interface CardParameterType {
 interface ICardSideTypes {
   faceUp?: boolean;
 }
+const animatedgradient = keyframes`
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+`;
 
+const shake = keyframes`{
+  10%,
+  90% {
+    transform: translate3d(-5px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(10px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-20px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(20px, 0, 0);
+  }
+}
+;`;
+const flyaround = keyframes`
+  0% {
+		top: 50%;
+    left: -20%;
+    z-index: 3;
+    transform: scale(1.2)
+	}
+  40%{
+    transform: scale(1.2)
+  }
+  45%{
+    transform: scale(1)
+  }
+  49%{
+    z-index: 3;
+    
+  }
+  50%{
+    left: 110%;
+    top: 60%;
+    z-index: -1;
+  }
+  92%{
+    transform: scale(1)
+  }
+  97%{
+    transform: scale(1.2)
+  }
+  99%{
+    z-index: -1;
+  }
+	100% { 
+	top: 50%;
+  left: -20%;
+  z-index: 3;
+	}
+`;
+
+export const PeopleIcon = styled(People)`
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  animation-delay: 1s;
+  transition: all 0.3s ease;
+  animation: ${flyaround} 5s linear infinite;
+  & * {
+    fill: white;
+  }
+`;
+
+export const StarshipIcon = styled(StarShip)`
+  position: absolute;
+  z-index: 0;
+  width: 30px;
+  transition: all 0.3s ease;
+  height: 30px;
+  animation: ${flyaround} 5s linear infinite;
+  & * {
+    fill: white;
+  }
+`;
 export const Wrapper = styled.div<ICardTypes>`
+  position: relative;
   padding: 15px;
   border-radius: 5px;
   width: 300px;
@@ -185,51 +283,3 @@ export const CardActions = styled.div`
   align-self: flex-end;
   margin-top: auto;
 `;
-
-const animatedgradient = keyframes`
-  0% {
-      background-position: 0% 50%;
-  }
-  50% {
-      background-position: 100% 50%;
-  }
-  100% {
-      background-position: 0% 50%;
-  }
-`;
-
-const scale = keyframes`
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.3);
-  }
-  100% {
-    transform: scale(1.0);
-  }
-`;
-
-const shake = keyframes`{
-  10%,
-  90% {
-    transform: translate3d(-5px, 0, 0);
-  }
-
-  20%,
-  80% {
-    transform: translate3d(10px, 0, 0);
-  }
-
-  30%,
-  50%,
-  70% {
-    transform: translate3d(-20px, 0, 0);
-  }
-
-  40%,
-  60% {
-    transform: translate3d(20px, 0, 0);
-  }
-}
-;`;

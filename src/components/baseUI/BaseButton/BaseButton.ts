@@ -1,27 +1,4 @@
-import styled, { keyframes, css } from "styled-components";
-
-const blow = keyframes`
-  0% {
-    height: 100%;
-    width: 100%;
-	}
-    35%{
-    height: 100%;
-    width: 100%; 
-    }
-	50% { 
-    height: calc(100% + 10px);
-    width: calc(100% + 10px);
-	}
-    65%{
-    height: 100%;
-    width: 100%; 
-    }
-    100%{
-    height: 100%;
-    width: 100%;
-    }
-`;
+import styled, { css } from "styled-components";
 
 type ButtonTypes = {
   disabled?: boolean;

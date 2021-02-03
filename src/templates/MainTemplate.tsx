@@ -17,7 +17,7 @@ const MainTemplate: React.FC = ({ children }) => {
     dispatch(GetPeople());
   }, []);
   const escPress = getKeyPressed("Escape");
-  let history = useHistory();
+  const history = useHistory();
   useEffect(() => {
     if (
       isMounted.current &&

@@ -8,13 +8,13 @@ import {
   StarshipType,
   StarshipResponseType,
 } from "./StarshipActionTypes";
-import { fetchRestOfList, setIdFromUrl } from "src/utils/actionsUtils";
+import { fetchRestOfList, setTypeAndIdFromUrl } from "src/utils/actionsUtils";
 import { parseToNumber } from "src/utils/commonUtils";
 
 const STARSHIP_ENDPOINT = `${process.env.REACT_APP_STAR_WARS_API}/starships/`;
 export const GetStarships = () => async (
   dispatch: Dispatch<StarshipDispatchTypes>
-) => {
+): Promise<void> => {
   dispatch({
     type: GET_STARSHIP_REUEST,
   });
@@ -31,7 +31,7 @@ export const GetStarships = () => async (
       );
       shipsList.push(...response.data.results, ...restShips);
       shipsList = shipsList
-        .map((item) => setIdFromUrl(item))
+        .map((item) => setTypeAndIdFromUrl(item))
         .map((ship) => {
           return {
             ...ship,

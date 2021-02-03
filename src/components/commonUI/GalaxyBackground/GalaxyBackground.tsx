@@ -14,7 +14,7 @@ const StyledBackgroundContainer = styled.div`
 const GalaxyBackground: React.FC = () => {
   return (
     <>
-      <StyledBackgroundContainer>
+      <StyledBackgroundContainer data-testid="galaxy-background">
         <Stars></Stars>
         <Twinkling></Twinkling>
       </StyledBackgroundContainer>

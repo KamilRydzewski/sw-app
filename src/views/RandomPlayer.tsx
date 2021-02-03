@@ -18,19 +18,20 @@ const StyledCardWrapper = styled.div`
   }
 `;
 
-type CardsState = {
-  leftCard: {
-    type: string;
-    data: (StarshipType & PeopleType) | undefined;
-  };
-  rightCard: {
-    type: string;
-    data: (StarshipType & PeopleType) | undefined;
-  };
-  [key: string]: any;
+export interface IGameCard extends PeopleType, StarshipType {
+  [key: string]: number | undefined | string;
+}
+export interface CardState {
+  type: string;
+  data?: IGameCard;
+}
+export type InitialCardsStateTypes = {
+  leftCard: CardState;
+  rightCard: CardState;
+  [key: string]: CardState;
 };
 
-type PointsState = {
+export type PointsState = {
   left: {
     prev: number;
     now: number;
@@ -63,13 +64,10 @@ const initialPointsState = {
   },
 };
 
-interface CompareFunc {
-  (compareTo: any, compareWith: any, comparingParams: string[]): number;
-}
-const RandomPlayer = () => {
+const RandomPlayer: React.FC = () => {
   const starshipsState = useSelector((state: RootStoreType) => state.starships);
   const peopleState = useSelector((state: RootStoreType) => state.people);
-  const [cards, setCards] = useState<CardsState>(initialCardsState);
+  const [cards, setCards] = useState<InitialCardsStateTypes>(initialCardsState);
   const [points, setPoints] = useState<PointsState>(initialPointsState);
   const [winner, setWinner] = useState("");
   const spacePress = getKeyPressed(" ");
@@ -116,23 +114,25 @@ const RandomPlayer = () => {
     });
   }, [cards.leftCard.data || cards.rightCard.data]);
 
-  const compareCardPoints: CompareFunc = (
-    compareTo,
-    compareWith,
-    comparingParams
+  const compareCardPoints = (
+    compareTo: IGameCard | undefined,
+    compareWith: IGameCard | undefined,
+    comparingParams: string[]
   ) => {
     if (compareTo === undefined && compareWith === undefined) return 0;
-    let firstValue = 0;
-    let secondValue = 0;
+    let firstValue;
+    let secondValue;
     comparingParams.forEach((param) => {
-      if (compareTo.hasOwnProperty(param)) {
+      if (compareTo?.hasOwnProperty(param)) {
         firstValue = compareTo[param];
       }
-      if (compareWith.hasOwnProperty(param)) {
+      if (compareWith?.hasOwnProperty(param)) {
         secondValue = compareWith[param];
       }
     });
-    return firstValue <= secondValue ? 0 : 1;
+    if (firstValue !== undefined && secondValue !== undefined) {
+      return firstValue <= secondValue ? 0 : 1;
+    } else return 0;
   };
 
   const setCardType = (value: string, cardType: string) => {
@@ -193,6 +193,7 @@ const RandomPlayer = () => {
       </GameTopBar>
       <StyledCardWrapper>
         <GameCard
+          cardType={cards.leftCard.data?.cardType}
           winner={winner === "leftCard"}
           blueCard
           reversed={cards.leftCard.data === undefined}
@@ -206,6 +207,7 @@ const RandomPlayer = () => {
           }
           actions={
             <BaseSelect
+              label="Card types"
               values={["All", "People", "Ships"]}
               initialValue="All"
               handleSelect={(event: string) => setCardType(event, "leftCard")}
@@ -220,6 +222,7 @@ const RandomPlayer = () => {
       </div>
       <StyledCardWrapper>
         <GameCard
+          cardType={cards.rightCard.data?.cardType}
           winner={winner === "rightCard"}
           redCard
           reversed={cards.rightCard.data === undefined}
@@ -233,6 +236,7 @@ const RandomPlayer = () => {
           }
           actions={
             <BaseSelect
+              label="Card types"
               values={["All", "People", "Ships"]}
               initialValue="All"
               handleSelect={(event: string) => setCardType(event, "rightCard")}
