@@ -82,9 +82,10 @@ const RandomPlayer: React.FC = () => {
         return "leftCard";
       } else if (points.right.now > points.right.prev) {
         return "rightCard";
-      } else return "";
+      } else return "draw";
     });
     setTimeout(() => {
+      console.log('hello')
       setWinner("");
     }, 3000);
   }, [points]);
@@ -193,7 +194,7 @@ const RandomPlayer: React.FC = () => {
       </GameTopBar>
       <StyledCardWrapper>
         <GameCard
-          winner={winner === "leftCard"}
+          winner={winner === "leftCard" || winner === "draw"}
           blueCard
           reversed={cards.leftCard.data === undefined}
           title={cards.leftCard.data?.name}
@@ -221,7 +222,7 @@ const RandomPlayer: React.FC = () => {
       </div>
       <StyledCardWrapper>
         <GameCard
-          winner={winner === "rightCard"}
+          winner={winner === "rightCard" || winner === "draw"}
           redCard
           reversed={cards.rightCard.data === undefined}
           title={cards.rightCard.data?.name}
