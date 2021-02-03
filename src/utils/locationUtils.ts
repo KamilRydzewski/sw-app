@@ -1,8 +1,8 @@
 const createHistory = require("history").createBrowserHistory;
 
-export const goToPage = (link: string) => {
-  let history = createHistory();
+export const goToPage = (link: string): void => {
+  const history = createHistory();
   history.push(link);
-  let pathUrl = window.location.href;
+  const pathUrl = window.location.href;
   window.location.href = pathUrl;
 };

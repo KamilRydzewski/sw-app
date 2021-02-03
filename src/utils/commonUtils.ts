@@ -20,5 +20,5 @@ export function getRandomObj<T extends CardType>(
 ): T | undefined {
   if (array !== undefined) {
     return array[Math.floor(Math.random() * array.length)];
-  }
+  } else return undefined;
 }
