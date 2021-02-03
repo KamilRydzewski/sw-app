@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
-import { ReactComponent as People } from "src/assets/images/darth-vader.svg";
-import { ReactComponent as StarShip } from "src/assets/images/smallship.svg";
+// import { ReactComponent as People } from "src/assets/images/darth-vader.svg";
+// import { ReactComponent as StarShip } from "src/assets/images/smallship.svg";
 interface ICardTypes {
   redCard?: boolean;
   blueCard?: boolean;
@@ -49,67 +49,10 @@ const shake = keyframes`{
   }
 }
 ;`;
-const flyaround = keyframes`
-  0% {
-		top: 50%;
-    left: -20%;
-    z-index: 3;
-    transform: scale(1.2)
-	}
-  40%{
-    transform: scale(1.2)
-  }
-  45%{
-    transform: scale(1)
-  }
-  49%{
-    z-index: 3;
-    
-  }
-  50%{
-    left: 110%;
-    top: 60%;
-    z-index: -1;
-  }
-  92%{
-    transform: scale(1)
-  }
-  97%{
-    transform: scale(1.2)
-  }
-  99%{
-    z-index: -1;
-  }
-	100% { 
-	top: 50%;
-  left: -20%;
-  z-index: 3;
-	}
-`;
 
-export const PeopleIcon = styled(People)`
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  animation-delay: 1s;
-  transition: all 0.3s ease;
-  animation: ${flyaround} 5s linear infinite;
-  & * {
-    fill: white;
-  }
-`;
+ 
 
-export const StarshipIcon = styled(StarShip)`
-  position: absolute;
-  z-index: 0;
-  width: 30px;
-  transition: all 0.3s ease;
-  height: 30px;
-  animation: ${flyaround} 5s linear infinite;
-  & * {
-    fill: white;
-  }
-`;
+
 export const Wrapper = styled.div<ICardTypes>`
   position: relative;
   padding: 15px;
@@ -226,6 +169,12 @@ export const CardTitle = styled.h3`
 
   @media all and (max-width: ${({ theme }) => theme.bpTablet}) {
     font-size: ${({ theme }) => theme.fontSize.xs};
+    height: 42px;
+    min-height: 42px;
+    padding: 5px 10px;
+  }
+  @media all and (max-width: ${({ theme }) => theme.bpMobile}) {
+    font-size: ${({ theme }) => theme.fontSize.xs};
     height: 35px;
     min-height: 35px;
     padding: 5px 10px;
@@ -285,3 +234,29 @@ export const CardActions = styled.div`
   align-self: flex-end;
   margin-top: auto;
 `;
+
+
+
+//icons for card types:
+
+// export const PeopleIcon = styled(People)`
+//   position: absolute;
+//   width: 20px;
+//   height: 20px;
+//   animation-delay: 1s;
+//   transition: all 0.3s ease;
+//   & * {
+//     fill: white;
+//   }
+// `;
+
+// export const StarshipIcon = styled(StarShip)`
+//   position: absolute;
+//   z-index: 0;
+//   width: 30px;
+//   transition: all 0.3s ease;
+//   height: 30px;
+//   & * {
+//     fill: white;
+//   }
+// `;

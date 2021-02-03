@@ -1,8 +1,5 @@
 import React, { ReactNode } from "react";
-
 import {
-  PeopleIcon,
-  StarshipIcon,
   Wrapper,
   CardBackground,
   Container,
@@ -46,7 +43,6 @@ const StyledIconWrapper = styled.div`
 `;
 
 const GameCard: React.FC<GameCardI> = ({
-  cardType,
   title,
   description,
   actions,
@@ -62,8 +58,6 @@ const GameCard: React.FC<GameCardI> = ({
       blueCard={blueCard}
       winner={winner}
     >
-      {cardType === "starships" && <StarshipIcon />}
-      {cardType === "people" && <PeopleIcon />}
       <Container faceUp={!reversed}>
         <CardBackground></CardBackground>
         {reversed ? (

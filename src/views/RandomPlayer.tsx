@@ -193,7 +193,6 @@ const RandomPlayer: React.FC = () => {
       </GameTopBar>
       <StyledCardWrapper>
         <GameCard
-          cardType={cards.leftCard.data?.cardType}
           winner={winner === "leftCard"}
           blueCard
           reversed={cards.leftCard.data === undefined}
@@ -222,7 +221,6 @@ const RandomPlayer: React.FC = () => {
       </div>
       <StyledCardWrapper>
         <GameCard
-          cardType={cards.rightCard.data?.cardType}
           winner={winner === "rightCard"}
           redCard
           reversed={cards.rightCard.data === undefined}
