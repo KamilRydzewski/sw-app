@@ -9,7 +9,7 @@ export function parseToNumber(
     value === null ||
     value === undefined
   ) {
-    return 0;
+    return Math.floor(Math.random() * 100);
   } else {
     return parseFloat(value.toString().replace(/[-,]/g, ""));
   }
