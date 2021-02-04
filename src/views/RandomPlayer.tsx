@@ -11,6 +11,7 @@ import { PeopleType } from "src/actions/people/PeopleActionTypes";
 import BaseSelect from "src/components/baseUI/BaseSelect/BaseSelect";
 import GameTopBar from "src/components/commonUI/GameTopBar/GameTopBar";
 import { getKeyPressed } from "src/utils/keyboardUtils";
+import SlideInfoPanel from "src/components/commonUI/SlideInfoPanel/SlideInfoPanel";
 
 const StyledCardWrapper = styled.div`
   margin: 20px;
@@ -189,6 +190,7 @@ const RandomPlayer: React.FC = () => {
 
   return (
     <GameTemplate>
+      <SlideInfoPanel text="You can play by 'Space' and exit on 'Esc'. Good Luck!"/>
       <GameTopBar leftPoints={points.left.now} rightPoints={points.right.now}>
         <BaseButton onClick={resetGame}>Reset</BaseButton>
       </GameTopBar>

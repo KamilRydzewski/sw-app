@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 import { NavigationSchema } from "./NavigationSchema";
 import { getKeyPressed } from "src/utils/keyboardUtils";
 import { useState, useEffect } from "react";
+import SlideInfoPanel from "../SlideInfoPanel/SlideInfoPanel";
 
 const StyledNavList = styled.ul`
   display: flex;
@@ -50,6 +51,7 @@ const MainNavigation: React.FC = () => {
     <Redirect push to={NavigationSchema[focused].to} />
   ) : (
     <StyledNavList data-testid="main-navigation">
+      <SlideInfoPanel text="You can controle by 'Arrow Up','Arrow Down' and 'Enter'"/>
       {NavigationSchema.map((link, index) => (
         <StyledNavItem
         data-testid={link.to}
